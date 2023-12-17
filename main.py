@@ -4,7 +4,7 @@ from linebot.exceptions import InvalidSignatureError
 from linebot.models import MessageEvent, TextMessage, TextSendMessage
 
 import os
-import csv
+import time
 from dotenv import load_dotenv
 
 # 載入.env檔案中的變數
@@ -38,6 +38,7 @@ def callback():
 
 @line_handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    time.sleep(10)
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text)
